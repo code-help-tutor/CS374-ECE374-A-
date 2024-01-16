@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage,amsmath,hyperref}
+
+\begin{document}
+
+\begin{center}\Large\bf 
+CS/ECE 374 A (Spring 2022)\\
+{\Large Homework 2} (due Feb 3 Thursday at 10am)
+\end{center}
+
+\medskip\noindent\hrulefill\bigskip
+
+\noindent
+{\bf Instructions:} As in Homework 1.
+%Carefully read\  
+%\url{http://engr.course.illinois.edu/cs374/sp2022/A/hw_policies.html}
+%and \url{http://engr.course.illinois.edu/cs374/sp2022/A/integrity.html}.
+
+\begin{description}
+\medskip
+\item[Problem 2.1:]
+For each of the
+following languages,
+give
+a regular expression that describes that language, and briefly
+argue why your expression is correct.
+Below, $\#_0(x)$ denotes the number of 0's in $x$, and $\#_1(x)$ denotes the number of 1's in $x$.
+
+\begin{enumerate}
+\item[(a)] All strings in $\{0,1\}^*$ of length at least 5 such that 
+the symbols at positions divisible by 5 are all 0's.
+For example: 
+the string $1001{\bf 0}1111{\bf 0}0101{\bf 0}11$ is in the language because the bold symbols are all 0's.
+\item[(b)] All strings $x\in\{0,1\}^*$ such that $x$ does not begin with $101$ and 
+$\#_0(x)$ is divisible by 3.
+\item[(c)] All strings in $\{0,1\}^*$ that do not contain $0111$ as a substring.
+\item[(d)] All strings in $\{0,1,2\}^*$ that have at least four 0's and exactly two 1's.
+\end{enumerate}
+
+
+\bigskip
+\item[Problem 2.2:]
+Describe a DFA that accepts each of the following languages.
+Describe briefly what each state in your DFA \emph{means}.
+For (a)--(c), you should draw the complete DFA.
+For (d), do not attempt to draw your DFA, since the number of states could be huge; instead,
+give a mathematically precise description of the states $Q$, 
+the start state $s$, the accepting states $A$, and the transition function $\delta$.
+
+
+
+\begin{enumerate}
+\item[(a)] (20 pts) All strings in $\{0,1\}^*$ of length at least 5 such that 
+the symbols at positions divisible by 5 are all 0's.
+\item[(b)] (20 pts) All strings $x\in\{0,1\}^*$ such that $x$ does not begin with $101$ and 
+$\#_0(x)$ is divisible by 3.
+\item[(c)] (20 pts) All strings in $\{0,1\}^*$ that do not contain $011001$ as a substring.
+\item[(d)] (40 pts) All strings $x\in\{0,1\}^*$ such that $x$ contains $0^9$ as a substring, or
+$|x|$ is divisible by 8, or $\#_0(x)-\#_1(x)$ is divisible by 7.
+\end{enumerate}
+
+
+\end{description}
+\end{document}
+

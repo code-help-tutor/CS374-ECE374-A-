@@ -1,0 +1,68 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage,amsmath,hyperref}
+\newcommand{\eps}{\varepsilon}
+
+\begin{document}
+
+\begin{center}\Large\bf 
+CS/ECE 374 A (Spring 2022)\\
+{\Large Homework 3} (due Feb 10 Thursday at 10am)
+\end{center}
+
+\medskip\noindent
+{\bf Instructions:} As in previous homeworks.
+
+
+\begin{description}
+\bigskip
+\item[Problem 3.1:]
+For each of the following languages in parts (a), (b), and (c),
+describe an NFA that accepts the language, using as few states as you can.
+Provide a short explanation of your solution.
+Below, $\#_0(x)$ and $\#_1(x)$ denote the number of 0's and the number of 1's in $x$ respectively.
+\begin{enumerate}
+\item[(a)] (30 pts)
+all strings $x\in\{0,1\}^*$ such that ($x$ ends with 10101 or 11011) and ($\#_0(x)$ is divisible by 3 or $\#_1(x)$ is divisible by 3).
+\item[(b)] (30 pts)
+the language defined by the regular expression
+$\big( ((01)^*0+2)(100)^*1 \big)^* \cdot (1^*+0^*2^*)$ over the alphabet $\{0,1,2\}$.
+\item[(c)] (10 pts)
+all strings in $\{0,1\}^*$ that contains the pattern $0?1?0$, where ``?''\ denotes ``don't care'' (i.e.,
+a single symbol that is either 0 or 1);
+in other words, the language defined by the regular expression $(0+1)^*\cdot 0(0+1)1(0+1)0\cdot (0+1)^*$.
+\item[(d)] (30 pts)
+Convert your NFA from part (c) to a DFA by using the subset construction
+(i.e., power set construction).  
+[{\em Note}: don't include unreachable states; also, several accepting states can be collapsed into one in this DFA.]
+\end{enumerate}
+
+
+\bigskip
+\item[Problem 3.2:]
+Given a language $L$ over the alphabet $\Sigma$,
+define
+\newcommand{\BACK}{\textsc{move-back}_8}
+\[ \BACK(L) = \{xayz:\ xyaz\in L,\ x,y,z\in\Sigma^*,\ a\in\Sigma,\ |y|\le 8\}.
+\]
+
+Prove that if $L$ is regular, then $\BACK(L)$ is regular.
+
+(For example, if $0100101001{\bf 1}0011\in L$, then
+$01{\bf 1}001010010011\in \BACK(L)$.)%
+\footnote{
+\ldots and also $010{\bf 1}01010010011\in \BACK(L)$, and $0100{\bf 1}1010010011\in \BACK(L)$, \ldots,
+$0100101001{\bf 1}0011\in \BACK(L)$.
+
+For a different example: $\BACK(0^*1^*) = 0^*1^* + 0^*101^* + 0^*1001^* + 0^*10^31^*+ \cdots + 0^*10^81^*$.
+}
+
+[{\em Hint}: given an NFA (or DFA) for $L$, construct an NFA for $\BACK(L)$.
+Give a formal description of your construction.  Provide an explanation of
+how your NFA works, including the meaning of each state.  A formal proof
+of correctness of your NFA is not required.]
+
+
+
+\end{description}
+\end{document}
+

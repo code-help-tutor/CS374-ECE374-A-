@@ -1,0 +1,107 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage,amsmath,hyperref,graphicx,xcolor}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\fig}[2]{\begin{figure}[h]\begin{center}%
+  \includegraphics[scale=#2]{#1.pdf}\end{center}%
+  \end{figure}}
+
+\begin{document}
+
+\begin{center}\Large\bf 
+CS/ECE 374 A (Spring 2022)\\
+{\Large Homework 11} (due April 28 Thursday at 10am)
+\end{center}
+
+\medskip
+\noindent
+{\bf Instructions:} As in previous homeworks.  
+
+
+\begin{description}
+\bigskip
+\item[Problem 11.1:]  
+Consider the following problem {\sc Colorful-Walk} (which is an extension of Problem 8.2(b) from HW8):
+\begin{quote}
+{\em Input\/}: a directed graph $G=(V,E)$ with $n$ vertices and $m$ edges, a vertex $s\in V$,
+and a color $c(e)\in \{1,\ldots,k\}$ for each edge $e\in E$, and a number $\ell$.\\[2pt]
+{\em Output\/}: ``yes'' iff there exists a walk that starts at $s$ and encounters at least $\ell$
+distinct colors.
+\end{quote}
+
+Consider the {\sc Set-Cover} problem:
+\begin{quote}
+{\em Input\/}: a set $X$ of $N$ elements, a collection of $M$ subsets ${\cal S} =\{S_1,\ldots,S_M\}$ where each $S_i\subseteq X$,
+and a number $K$.\\[2pt]
+{\em Output\/}: ``yes'' iff there exists a subcollection ${\cal T}\subseteq {\cal S}$  of $K$ subsets, such that
+the union of the subsets in ${\cal T}$ includes all elements of $X$.
+\end{quote}
+
+Describe a polynomial-time reduction from {\sc Set-Cover} to {\sc Colorful-Walk}.  Follow these steps:
+\begin{itemize}
+\item Given an input to {\sc Set-Cover} (i.e., $X$, ${\cal S}$, and $K$),
+describe a construction of an input to {\sc Colorful-Walk} (i.e., $G$, $s$, $c(\cdot)$, and $\ell$).
+Check that your construction takes polynomial time.
+\item Prove that the input to {\sc Set-Cover} has a ``yes'' answer \emph{if and only if} your input to {\sc Colorful-Walk} has a ``yes'' answer.
+\end{itemize}
+Since {\sc Set-Cover} is a well-known NP-hard problem, it would then follow that {\sc Colorful-Walk} is NP-hard.  
+
+(Hint: for your construction of the directed graph $G$, try something like the picture below,  
+with appropriate colors assigned to edges.  Remember that in the actual description of your construction, 
+you are given $X$, ${\cal S}$, and $K$; you are \emph{not} given ${\cal T}$, which may or may not exist, since the goal is to determine whether the answer is ``yes'' or ``no''.)
+\fig{hw11fig}{0.9}
+
+\newpage
+%\bigskip
+\item[Problem 11.2:]
+By now, everyone has heard of Wordle, the online word-guessing game.
+Here, you will consider a tougher variant of the game, where
+the word length $n$ is a variable, all strings of length $n$ from a fixed
+alphabet are legal words (no dictionary needed!), and after each guess, you are only told
+whether there is a green (matching) position, but not the number of green (nor yellow)
+positions, nor where they are exactly.  You will show that in this version of the game,
+just deciding whether there exists a solution after a series of guesses is already hard (so forget about
+the question of how to generate a good next guess!).  
+
+
+\newcommand{\match}{\textrm{match}}
+\newcommand{\true}{\textrm{true}}
+\newcommand{\false}{\textrm{false}}
+If you didn't follow the above paragraph, don't worry---here is the precise definition of
+our problem:
+For two strings $y$ and $z$ of length $n$, first define $\match(y,z)$ to be true
+if there exists a position~$k$ such that the $k$-th symbol of $y$
+is equal to the $k$-th symbol of $z$, and false otherwise.
+The statement of the {\sc Tough-Wordle} problem is as follows:
+\begin{quote}
+{\em Input\/}: a finite alphabet~$\Sigma$, a list of $m$ strings $y_1,\ldots,y_m\in\Sigma^n$,
+and $m$ Boolean values $b_1,\ldots,b_m\in\{\true,\false\}$.\\[2pt]
+{\em Output\/}: ``yes'' iff there exists a string~$z\in\Sigma^n$
+such that $\match(y_i,z)=b_i$ for each $i=1,\ldots,m$.
+\end{quote}
+
+(Example: on the input with $\Sigma=\{A,B,C\}$,
+$y_1=AAAA$, $b_1=\true$, $y_2=BBCC$, 
+$b_2=\true$, $y_3=BCAB$, $b_3=\false$, the answer is ``yes'', e.g., by 
+choosing $z=ABCC$.)
+
+Describe a polynomial-time reduction from {\sc 3SAT} to {\sc Tough-Wordle}.  Follow these steps:
+\begin{itemize}
+\item Given an input to {\sc 3SAT} (i.e., a Boolean formula $F$ in 3CNF form),
+describe a construction of an input to {\sc Tough-Wordle} (i.e., an alphabet $\Sigma$, and 
+a list of strings and Boolean values).
+Check that your construction takes polynomial time.
+\item Prove that $F$ is
+satisfiable \emph{if and only if} your input to {\sc Tough-Wordle} has a ``yes''
+answer.
+\end{itemize}
+Since {\sc 3SAT} is NP-hard, it would then follow that {\sc Tough-Wordle} is NP-hard. 
+
+(Hint: in your construction, an alphabet of size~3 (0, 1,
+and an extra symbol) would be sufficient.  Suppose $F$ has $n$ variables and 
+$m$ clauses.  Intuitively, the string $z$ (if exists) should correspond to a satisfying assignment of $F$ (if exists).  For each clause $C_i$, construct a string $y_i$ of length $n$ (and a corresponding Boolean value $b_i$) to somehow make sure that $z$
+contains at least one true literal of $C_i$.  Also, construct an extra string to somehow make sure that $z$ uses only 0s and 1s and not the extra symbol\ldots\ \ Remember that in the actual description of your construction, 
+all you are given is $F$; you are \emph{not} given a satisfying assignment, which may or may not exist, since the goal is to determine whether the answer is ``yes'' or ``no''.)
+
+\end{description}
+\end{document}
+

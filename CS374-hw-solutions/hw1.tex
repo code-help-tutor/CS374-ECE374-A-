@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage,amsmath,hyperref}
+
+\begin{document}
+
+\begin{center}\Large\bf 
+CS/ECE 374 A (Spring 2022)\\
+{\Large Homework 1} (due Jan 27 Thursday at 10am)
+\end{center}
+
+\medskip\noindent\hrulefill\bigskip
+
+\noindent
+{\bf Instructions:} Carefully read\  
+\url{http://engr.course.illinois.edu/cs374/sp2022/A/hw_policies.html}
+and \url{http://engr.course.illinois.edu/cs374/sp2022/A/integrity.html}.
+
+
+\begin{itemize}
+    \item \textbf{Groups of up to three people may submit joint
+       solutions.}  Each problem should be submitted by exactly one
+    person, and the beginning of the homework should clearly state the
+    Gradescope names and email addresses of each group member.  In
+    addition, whoever submits the homework must tell Gradescope who
+    their other group members are.
+
+    \item \textbf{Submit your solutions electronically on the course
+       Gradescope site as PDF files.}  Submit a separate PDF file for
+    each numbered problem.  If you plan to typeset your solutions,
+    please use the \LaTeX\ solution template on the course web site.
+    If you must submit scanned handwritten solutions, please use a
+    black pen on blank white paper and a high-quality scanner app (or
+    an actual scanner, not just a phone camera).
+
+    \item If you are not using your real name and your
+    \texttt{illinois.edu} email address on Gradescope, you will need
+    to fill in the form linked in the course web page. 
+
+    \item \textbf{You may use any source at your disposal}---paper,
+    electronic, or human---but you \emph{must} cite \emph{every} source
+    that you use, and you \emph{must} write everything yourself in
+    your own words.  
+
+    \item Any homework or exam
+    solution that breaks any of the following rules may be given an
+    \emph{automatic zero}.
+    \begin{itemize}
+        \item Always give complete solutions, not just examples.
+        \item Always declare all your variables, in English.  In
+        particular, always describe the specific problem your
+        algorithm is supposed to solve.     
+        \item Always avoid unnecessarily long answers.
+    \end{itemize}
+\end{itemize}
+\hrulefill
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+
+
+\newpage
+\begin{description}
+\item[Problem 1.1:]
+Let $L\subseteq\{0,1\}^*$ be the language defined recursively 
+as follows:
+\begin{itemize}
+\item The empty string $\eps$ is in $L$.
+\item For any string $x$ in $L$,
+the strings $0101x$ and $1010x$ are also in $L$.
+\item For any strings $x,y$ such that $xy$ is in $L$, 
+the strings $x00y$ and $x11y$ are also in $L$.
+(In other words, inserting two consecutive 0's or two consecutive 1's anywhere to a string in $L$
+yields another string in $L$.)
+\item The only strings in $L$ are those that can be
+obtained by the above rules.
+\end{itemize}
+
+Define $L_{ee}=\{ x\in\{0,1\}^*: \mbox{$x$ has an even number of 0's and an even number of 1's}\}$.
+\begin{enumerate}
+\item[(a)] Prove that $L \subseteq L_{ee}$, by using induction.  (You should use \emph{strong} induction.)
+\item[(b)] Conversely, prove that $L_{ee}\subseteq L$, by using induction. 
+\end{enumerate}
+
+\bigskip
+\item[Problem 1.2:]
+Let $L=\{ x\in \{0,1,\ldots,9\}^*: \mbox{$x$ does not contain 374 as a substring}\}$.
+
+Obviously, the number of strings in $\{0,1,\ldots,9\}^*$ of length $n$ is equal to $10^n$.
+
+Prove that the number of strings in $L$ of length $n$ is at most $2\cdot 9.992^n$, by using induction.
+
+[Hint: consider two cases: $x$ does not start with 3, or starts with 3.  In the second case, consider two subcases: the second symbol is not 7, or is 7.]
+
+[We may give bonus points for a proof of an upper bound better than $O(9.990^n)$.]
+
+
+\end{description}
+
+
+
+\end{document}
